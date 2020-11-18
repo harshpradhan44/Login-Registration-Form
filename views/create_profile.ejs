@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
+
+  	<nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Form Data</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/dashboard">Home</a></li>
+                <li><a href="/create-profile">Create Profile </a></li>
+                <li><a href="/view-profile">View Profile </a> </li>  
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            <div class="navbar-header" style="float: right;"> <a class="navbar-brand" href="#">Loggedin As: <%if(loginUser) {%>
+	            <%= loginUser %>
+	            <%}%></a></div>
+            </div>
+    </nav>
+  
+  	<div class="container">
+  		<div class="row">
+  			<h2 class="text-center"><%= title %></h2>
+  			<div id="loginbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  				<div class="panel panel-info">
+  					<div class="panel-heading">
+  						<div class="panel-title"> Create Profile </div>
+  					</div>
+            
+  					<centre> <div class="panel-body">
+              			<% if(msg != '') {%>
+                  		<p style="text-align:centre; color:green;">  <%= msg %></p>
+                  		<% } %>
+                  	</centre>
+
+  						<form action="/create-profile" id="SignupForm" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+  							<div id="signupalert" style="display:none" class="alert alert-danger">
+  								<p>Error:</p> 
+  							</div>
+  							<div class="form-group">
+  								<label for="tickeSubject" class="col-md-3 control-label"> Name </label>
+  								<div class="col-md-6">
+  									<input type="text" class="form-control" name="name"  required>
+  								</div>
+                </div>
+                
+                <div class="form-group">
+  								<label for="tickeSubject" class="col-md-3 control-label"> Age </label>
+  								<div class="col-md-6">
+  									<input type="text" class="form-control" name="age"  required>
+  								</div>
+                </div>
+                
+
+                <div class="form-group">
+                  <label for="priorityList" class="col-md-3 control-label"> Gender </label>
+                    <div class="col-md-9">
+                     <select class="formControl" name="gender"> 
+                        <option value=""> Choose Gender </option>
+                         <option value="male"> Male </option>
+                         <option value="female"> Female </option>
+                        
+                        
+                     </select>
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-md-3 label-heading" for="p-in">Upload Profile Picture</label>
+                    <div class="col-md-5">
+                      <input type="file" class="custom-control" name="profilePicture" accept="image/* ">
+                    </div>
+                </div>
+  				<div class="form-group">
+  					<div class="col-md-offset-3 col-md-9">
+  						<input type="submit" value="Create Profile" class="btn btn-primary">
+  					</div>
+  				</div>
+  				</form>
+  				</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>			
+    <script>
+      CKEDITOR.replace( 'editor' );
+    </script>
+  </body>
+</html>
